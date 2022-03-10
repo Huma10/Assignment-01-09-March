@@ -53,6 +53,6 @@ import { ParentComponent } from './components/employeecomponent/app.parentemploy
     ReactiveFormsModule,HttpClientModule
   ],
   providers: [],
-  bootstrap: [MainRoutingComponent]
+  bootstrap: [EmployeeComponent]
 })
 export class AppModule { }

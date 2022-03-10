@@ -22,6 +22,9 @@ export class EmployeeComponent implements OnInit, OnChanges {
   private logic: EmployeeLogic;
   columnHeaders: Array<string>;
   row1: number;
+  canSort = true;
+  sorting: Employee ;
+  employeeId:number;
   generateRow(): void {
     this.row1 = this.row1;
     console.log('invoked' + this.row1);
@@ -47,4 +50,28 @@ export class EmployeeComponent implements OnInit, OnChanges {
     this.employee = event;
     console.log(`Row ${this.employee}`);
   }
+  onReceived(event: any): void {
+    this.empNo = event;
+    console.log(`Emp id: ${this.empNo}`);
+    this.sortData();
+  }
+  sortData(){
+  //  this.a = false;
+    console.log("In sort data "+event);
+    if(!this.canSort){
+      let newarr = this.employees.sort((a,b)=>a.EmployeeId-b.EmployeeId);
+      this.employees = newarr;
+      console.log(this.employees);
+
+    }else{
+      let newarr = this.employees.sort((a,b)=>b.EmployeeId-a.EmployeeId);
+      this.employees = newarr;
+      console.log(this.employees);
+    }
+  this.canSort = !this.canSort;
+  }
+//From the Parent Component, you need to pass the value for 'canSort' to the child component.
+  //This is the @Input decorated property in the Child Component.
+  //If the parent component pass the value
+  //for this property as 'true' then the child component has to show data in sorted manner
 }

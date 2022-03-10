@@ -20,17 +20,17 @@
       </tbody>
   </table> -->
   <h3></h3>>
-  <table class="table table-bordered shadow">
+  <table class="table table-bordered shadow" >
     <thead>
       <tr>
         <th *ngFor="let col of columnHeaders">{{col}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let e of employees" [setColor]="'green'">
-        <td *ngFor="let col of columnHeaders">{{e[col]}}</td>
+      <tr *ngFor="let e of employees " [setColor]="'green'">
+        <td *ngFor="let col of columnHeaders" >{{e[col]}}</td>
       </tr>
-      <app-table-ui></app-table-ui>
+      <app-table-ui [DataSource]="employeeId" (onValueSelected)="onReceived($event)"></app-table-ui>
     </tbody>
   </table>
 
